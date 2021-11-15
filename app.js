@@ -1,3 +1,9 @@
+// Load the environment variables
+require('dotenv').config();
+
+// Establish a connection to the DB
+require('./database/connection');
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,11 +11,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
+const authMiddleware = require('./middleware/auth');
+
 var mealsRouter = require('./routes/meals');
 
 var app = express();
 
 app.use(cors());
+app.use(authMiddleware);
 
 app.use(logger('dev'));
 app.use(express.json());
