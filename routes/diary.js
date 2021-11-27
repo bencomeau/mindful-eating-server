@@ -4,7 +4,8 @@ const diaryController = require('../controllers/diaryController');
 
 const router = express.Router();
 
-router.get('/', diaryController.get);
+router.get('/', diaryController.index);
+router.get('/:date', diaryController.show);
 router.post('/', diaryController.create);
 
 module.exports = router;
