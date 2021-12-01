@@ -11,15 +11,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
-const authMiddleware = require('./middleware/auth');
-
 var mealsRouter = require('./routes/meals');
 var diaryRouter = require('./routes/diary');
 
 var app = express();
 
 app.use(cors());
-app.use(authMiddleware);
 
 app.use(logger('dev'));
 app.use(express.json());
